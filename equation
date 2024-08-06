@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<math.h>
+void NN(float a, float b){
+    float c = (sqrt(log(a)+exp(a)+sin(a)))/(sqrt(pow(a, b)+cos(a)+tan(a)));
+    printf("Final answer will be : %f\n", c);
+}
+void main(){
+    float a, b;
+    printf("Enter the a Value : ");
+    scanf("%f", &a);
+    printf("Enter the b value : ");
+    scanf("%f", &b);
+    NN(a, b);
+}
