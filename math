@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<math.h>
+void NN(float a, float b){
+    printf("Ceil %f\n", ceil(a));
+    printf("Floor %f\n", floor(a));
+    printf("Sqrt %f\n", sqrt(a));
+    printf("pow %f\n", pow(a, b));
+    printf("log %f\n", log(a));
+    printf("exp %f\n", exp(a));
+    printf("Sin %f\n", sin(a));
+    printf("Cos %f\n", cos(a));
+    printf("Tan %f\n", tan(a));
+}
+void main(){
+    float a, b;
+    printf("Enter the a Value : ");
+    scanf("%f", &a);
+    printf("Enter the b value : ");
+    scanf("%f", &b);
+    NN(a, b);
+}
