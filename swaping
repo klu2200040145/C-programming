@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>
+void NN(int a, int b){
+    printf("before swaping a and b : %d %d\n", a, b);
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    printf("after swaping a and b : %d %d", a, b);
+}
+void main(){
+    int a, b;
+    printf("Enter a : ");
+    scanf("%d", &a);
+    printf("Enter b : ");
+    scanf("%d", &b);
+    NN(a, b);
+}
