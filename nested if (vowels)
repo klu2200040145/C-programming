@@ -1,0 +1,14 @@
+#include<stdio.h>
+int NN(char c){
+    if(c == 'a'|| c =='A'|| c == 'e' || c == 'E' || c == 'i' || c=='I'||c=='o'||c=='O'||c=='u'||c=='U')
+    printf("Vowel\n");
+    else
+    printf("Invalid\n");
+    return 0;
+}
+void main(){
+    char a;
+    printf("Enter the character : ");
+    scanf("%c", &a);
+    NN(a);
+}
