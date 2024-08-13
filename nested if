@@ -1,0 +1,27 @@
+#include<stdio.h>
+int min(int a, int b, int c){
+    if(a > 35){
+        if(b > 35){
+            if(c > 35){
+                printf("Pass\n");
+            }else{
+                printf("Fail\n");
+            }
+        }else{
+            printf("Fail\n");
+        }
+    }else{
+        printf("Fail\n");
+    }
+    return 0;
+}
+void main(){
+    int a, b, c;
+    printf("Enter the subject 1 marks : ");
+    scanf("%d", &a);
+    printf("Enter the subject 2 marks : ");
+    scanf("%d", &b);
+    printf("Enter the subject 3 marks : ");
+    scanf("%d", &c);
+    min(a, b, c);
+}
