@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .atm-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .options button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .options button:hover {
+            background-color: #0056b3;
+        }
+
+        .menu {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="atm-container">
+        <h1>ATM Machine</h1>
+        <div class="options">
+            <button onclick="selectOption(1)">Deposit</button>
+            <button onclick="selectOption(2)">Withdraw</button>
+            <button onclick="selectOption(3)">Balance</button>
+            <button onclick="selectOption(4)">PIN Change</button>
+        </div>
+        <div id="menu" class="menu">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </div>
+    <script>
+        let balance = 2000;
+        let pin = 1234;
+
+        function selectOption(option) {
+            let menu = document.getElementById("menu");
+            menu.innerHTML = '';
+
+            if (option === 1) {
+                menu.innerHTML = `
+                    <h2>Deposit Menu</h2>
+                    <p>Enter PIN:</p>
+                    <input type="password" id="pin-input">
+                    <p>Enter Deposit Amount:</p>
+                    <input type="number" id="deposit-amount">
+                    <button onclick="deposit()">Submit</button>
+                `;
+            } else if (option === 2) {
+                menu.innerHTML = `
+                    <h2>Withdraw Menu</h2>
+                    <p>Enter PIN:</p>
+                    <input type="password" id="pin-input">
+                    <p>Enter Withdrawal Amount:</p>
+                    <input type="number" id="withdraw-amount">
+                    <button onclick="withdraw()">Submit</button>
+                `;
+            } else if (option === 3) {
+                menu.innerHTML = `
+                    <h2>Balance Menu</h2>
+                    <p>Enter PIN:</p>
+                    <input type="password" id="pin-input">
+                    <button onclick="checkBalance()">Submit</button>
+                `;
+            } else if (option === 4) {
+                menu.innerHTML = `
+                    <h2>PIN Change Menu</h2>
+                    <p>Enter Old PIN:</p>
+                    <input type="password" id="old-pin-input">
+                    <p>Enter New PIN:</p>
+                    <input type="password" id="new-pin-input">
+                    <button onclick="changePin()">Submit</button>
+                `;
+            }
+        }
+
+        function deposit() {
+            let pinInput = document.getElementById("pin-input").value;
+            let depositAmount = parseInt(document.getElementById("deposit-amount").value);
+
+            if (pinInput == pin) {
+                if (depositAmount % 100 === 0 && depositAmount > 0) {
+                    balance += depositAmount;
+                    alert("Amount deposited successfully! New balance: " + balance);
+                } else {
+                    alert("Please enter amount in the denomination of 100 and greater than 0.");
+                }
+            } else {
+                alert("Invalid PIN.");
+            }
+        }
+
+        function withdraw() {
+            let pinInput = document.getElementById("pin-input").value;
+            let withdrawAmount = parseInt(document.getElementById("withdraw-amount").value);
+
+            if (pinInput == pin) {
+                if (withdrawAmount % 100 === 0 && withdrawAmount > 0) {
+                    if (balance >= withdrawAmount) {
+                        balance -= withdrawAmount;
+                        alert("Amount withdrawn successfully! New balance: " + balance);
+                    } else {
+                        alert("Insufficient balance.");
+                    }
+                } else {
+                    alert("Please enter amount in the denomination of 100 and greater than 0.");
+                }
+            } else {
+                alert("Invalid PIN.");
+            }
+        }
+
+        function checkBalance() {
+            let pinInput = document.getElementById("pin-input").value;
+
+            if (pinInput == pin) {
+                alert("Current balance: " + balance);
+            } else {
+                alert("Invalid PIN.");
+            }
+        }
+
+        function changePin() {
+            let oldPinInput = document.getElementById("old-pin-input").value;
+            let newPinInput = document.getElementById("new-pin-input").value;
+
+            if (oldPinInput == pin) {
+                pin = newPinInput;
+                alert("PIN changed successfully!");
+            } else {
+                alert("Invalid old PIN.");
+            }
+        }
+    </script>
+</body>
+</html>
